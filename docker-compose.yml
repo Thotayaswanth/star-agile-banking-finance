@@ -1,0 +1,28 @@
+services:
+  db:
+    image: mysql:latest    
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=appaddressbook #somewordpress
+      - MYSQL_DATABASE=addbook  #wordpress
+      - MYSQL_USER=addbook #wordpress
+      - MYSQL_PASSWORD=addbook #wordpress
+    expose:
+      - 3306
+      - 33060
+  wordpress:
+    image: cbabu85/addressbook-sep:latest
+    ports:
+      - 8084:8081
+    depends_on:
+       - db
+    restart: always
+    environment:
+      - ADDRESSBOOK_DB_HOST=db
+      - ADDRESSBOOK_DB_USER=addbook
+      - ADDRESSBOOK_DB_PASSWORD=addbook
+      - ADDRESSBOOK_DB_NAME=addbook
+volumes:
+  db_data:
