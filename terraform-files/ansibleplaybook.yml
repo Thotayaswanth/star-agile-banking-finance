@@ -7,10 +7,10 @@
     command : sudo apt update
 
   - name : Install Docker
-    command : sudo apt install docker -y
+    command : sudo apt install docker.io -y
 
   - name : Start Docker Service
     command : sudo systemctl start docker
 
   - name: Deploy Docker Container
-    command: docker run -itd -p 8084:8081 cbabu85/banking-project-demo:1.0
+    command: docker run -itd -p 8084:8081 thotayaswanth/financeme:1.0
