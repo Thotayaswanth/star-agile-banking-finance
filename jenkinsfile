@@ -12,7 +12,7 @@ pipeline {
 
             }        
         }
-         stage('Create Docker Image') {
+   /*      stage('Create Docker Image') {
            steps {
                sh 'docker build -t thotayaswanth/financepro:1.0 .'
                     }
@@ -28,7 +28,7 @@ pipeline {
            steps {
                sh 'docker push thotayaswanth/financepro:1.0'
                      }
-                }
+                }    */
     stage('Config & Deployment') {
             steps {
                 
